@@ -1,0 +1,30 @@
+{
+  "name": "es6-express",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": "./src/index.js",
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "start": "nodemon ./bin/www.js",
+    "start:dev": "NODE_ENV=development DEBUG=es6-express:* npm start"
+  },
+  "dependencies": {
+    "axios": "^1.5.1",
+    "bootstrap": "^5.3.2",
+    "cookie-parser": "~1.4.4",
+    "dayjs": "^1.11.10",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "http-errors": "~1.6.3",
+    "jquery": "^3.7.1",
+    "morgan": "~1.9.1",
+    "pokedex-promise-v2": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
