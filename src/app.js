@@ -11,8 +11,6 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-import dex from './models/pokedex.js';
-app.locals = dex.init(app.locals);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
