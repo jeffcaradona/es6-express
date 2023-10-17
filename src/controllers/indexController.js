@@ -1,7 +1,13 @@
-let controller = {}
+let controller = {};
 
 controller.index = (req, res, next) => {
-  res.render('index', { title: 'Express' });
-}
+  try {
+    
+    res.render("index", { title: "Express" });
+      
+  } catch (error) {
+      next(error);
+  } 
+};
 
 export default controller;

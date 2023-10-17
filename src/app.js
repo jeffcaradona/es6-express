@@ -11,6 +11,10 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+import fp from "./models/fp.js";
+import info from '../package.json' assert { type: 'json' };
+app.locals = fp.addObject(app.locals,info.name,{version:info.version});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
