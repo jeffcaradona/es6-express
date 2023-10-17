@@ -1,20 +1,25 @@
 import createError from 'http-errors';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
+import fp from "./models/fp.js";
+import info from '../package.json' assert { type: 'json' };
+
+import indexRouter from './routes/indexRouter.js';
+//  ajaxRouter
+//  apiRouter
+
+//  Explicitly create __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 
-import fp from "./models/fp.js";
-import info from '../package.json' assert { type: 'json' };
+// Create the application object in locals for holding a connection pool
 app.locals = fp.addObject(app.locals,info.name,{version:info.version});
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,8 +37,11 @@ app.use('/js/jquery', express.static(path.join(__dirname, '../node_modules/jquer
 app.use('/js/dayjs', express.static(path.join(__dirname, '../node_modules/dayjs') ));
 
 
-import indexRouter from './routes/indexRouter.js';
+
 app.use('/', indexRouter);
+app.use('/ajax',(req,res,next)=>res.json('AJAX'));
+app.use('/api',(req,res,next)=>res.json('API'))
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
