@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "nodemon ./bin/www.js",
-    "start:dev": "NODE_ENV=development DEBUG=es6-express:* npm start"
+    "start:dev": "cross-env  NODE_ENV=development DEBUG=es6-express:* npm start"
   },
   "dependencies": {
     "axios": "^1.5.1",
@@ -24,6 +24,7 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "nodemon": "^3.0.1"
   }
 }

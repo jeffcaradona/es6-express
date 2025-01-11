@@ -1,3 +1,4 @@
+import fs from 'fs';
 import createError from 'http-errors';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -5,8 +6,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
-import fp from "./models/fp.js";
-import info from '../package.json' assert { type: 'json' };
+
 
 import indexRouter from './routes/indexRouter.js';
 //  ajaxRouter
@@ -16,10 +16,14 @@ import indexRouter from './routes/indexRouter.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Read package.json
+const info = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'), 'utf-8'));
+
+
 const app = express();
 
 // Create the application object in locals for holding a connection pool
-app.locals = fp.addObject(app.locals,info.name,{version:info.version});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

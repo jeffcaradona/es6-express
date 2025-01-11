@@ -6,7 +6,7 @@
 
 import app from '../src/app.js'
 import debugLib from 'debug';
-const debug = debugLib('pokedex:server');
+const debug = debugLib('es6-express:server');
 import http from 'http'
 /**
  * Get port from environment and store in Express.
