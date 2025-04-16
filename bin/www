@@ -3,11 +3,13 @@
 /**
  * Module dependencies.
  */
+import { configDotenv } from 'dotenv';
 
 import app from '../src/app.js'
 import debugLib from 'debug';
 const debug = debugLib('es6-express:server');
 import http from 'http'
+configDotenv();
 /**
  * Get port from environment and store in Express.
  */
@@ -86,5 +88,7 @@ function onListening() {
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
+  const url = `http://localhost:${addr.port}`;
   debug('Listening on ' + bind);
+  console.log(`Server is running at ${url}`);
 }

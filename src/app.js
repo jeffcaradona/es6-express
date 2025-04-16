@@ -9,8 +9,7 @@ import logger from 'morgan';
 
 
 import indexRouter from './routes/indexRouter.js';
-//  ajaxRouter
-//  apiRouter
+
 
 //  Explicitly create __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -35,10 +34,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/css/bootstrap', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/css') ));
-app.use('/js/bootstrap', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/js') ));
-app.use('/js/jquery', express.static(path.join(__dirname, '../node_modules/jquery/dist') ));
-app.use('/js/dayjs', express.static(path.join(__dirname, '../node_modules/dayjs') ));
+app.use('/css/', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/css') ));
+app.use('/css', express.static(path.join(__dirname, '../node_modules/bootstrap-icons/font') ));
+app.use('/img/svg', express.static(path.join(__dirname, '../node_modules/bootstrap-icons/icons') ));
+
+
+app.use('/js', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/js') ));
+app.use('/js', express.static(path.join(__dirname, '../node_modules/axios/dist') ));
+
+app.use('/js', express.static(path.join(__dirname, '../node_modules/jquery/dist') ));
+app.use('/js', express.static(path.join(__dirname, '../node_modules/dayjs') ));
 
 
 
