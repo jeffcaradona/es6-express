@@ -63,3 +63,5 @@ package-lock.json
 
 # SonarLint Qube/Cloud config files
 .sonarlint
+
+.vscode/
