@@ -1,11 +1,19 @@
 {
   "name": "es6-express5",
+  "description": "A simple Express 5 application with ES6 modules and TypeScript support.",
   "version": "0.0.1",
   "type": "module",
   "private": true,
+  "files": [
+    "src/",
+    "bin/",
+    "views/",
+    "public/",
+    "package.json"
+  ],
   "exports": "./src/index.js",
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "scripts": {
     "start": "node ./bin/www",

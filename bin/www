@@ -7,7 +7,7 @@ import { configDotenv } from 'dotenv';
 
 import app from '../src/app.js'
 import debugLib from 'debug';
-const debug = debugLib('es6-express:server');
+const debug = debugLib('es6-express5:server');
 import http from 'http'
 configDotenv();
 /**
