@@ -90,5 +90,5 @@ function onListening() {
     : 'port ' + addr.port;
   const url = `http://localhost:${addr.port}`;
   debug('Listening on ' + bind);
-  console.log(`Server is running at ${url}`);
+  debug(`Server is running at ${url}`);
 }
