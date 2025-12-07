@@ -1,25 +1,28 @@
-import fs from "fs";
+import { debugApplication } from './utils/debug.js';
+
+
+// Read package.json
+import info from '../package.json' with { type: 'json' };
+debugApplication(`[APP] info.name: ${info.name}, info.version: ${info.version}`);
+
+
+import fs from "node:fs";
 import createError from "http-errors";
-import path from "path";
-import { fileURLToPath } from "url";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import express from "express";
 import cookieParser from "cookie-parser";
-import session from "express-session";
+
 
 import morgan from "morgan";
 import logger from "./utils/logger.js"; // ⬅️ Your winston logger
 
-import indexRouter from "./routes/indexRouter.js";
 
 //  Explicitly create __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Read package.json
-const info = JSON.parse(
-  fs.readFileSync(path.join(__dirname, "../package.json"), "utf-8")
-);
-console.info(`[APP] info.name: ${info.name}, info.version: ${info.version}`);
+
 
 const app = express();
 
@@ -33,13 +36,18 @@ const accessLogStream = fs.createWriteStream(path.join("logs", "access.log"), {
   flags: "a",
 });
 
+// Configure HTTP request logging with morgan middleware
+// Morgan logs all incoming HTTP requests to help with debugging and monitoring
 if (process.env.NODE_ENV === "production") {
+  // Production: Use "combined" format (detailed logs) and route through Winston logger
+  // This ensures logs are written to both console and file with Winston's configuration
   app.use(
     morgan("combined", {
       stream: { write: (msg) => logger.info(msg.trim()) },
     })
   );
 } else {
+  // Development: Use "dev" format for concise, color-coded output in the terminal
   app.use(morgan("dev")); // color-coded, short, easy for dev
 }
 
@@ -75,6 +83,8 @@ app.use(
   express.static(path.join(__dirname, "../node_modules/jquery/dist"))
 );
 app.use("/js", express.static(path.join(__dirname, "../node_modules/dayjs")));
+
+import indexRouter from "./routes/indexRouter.js";
 
 app.use("/", indexRouter);
 app.use("/ajax", (req, res, next) => res.json("AJAX"));
