@@ -2,7 +2,7 @@ import debugLib from 'debug';
 
 // Load package.json to get the module name
 /*
-import pkg from './package.json' assert { type: 'json' }; 
+import pkg from './package.json' with { type: 'json' }; 
      - happens once at module load, is synchronous, cached, 
         and avoids extra filesystem boilerplate. 
         Ideal for config constants like name, version, etc.
@@ -14,7 +14,7 @@ fs.promises.readFile (or readFileSync)
 */
 
 
-import pkg from '../../package.json' assert { type: 'json' };
+import pkg from '../../package.json' with { type: 'json' };
 
 const MODULE_NAME = pkg?.name ?? 'es6-express5';
 
