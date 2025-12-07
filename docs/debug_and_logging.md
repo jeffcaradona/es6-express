@@ -281,6 +281,6 @@ DEBUG=es6-express5:* npm start
 
 - **Debug configuration**: `src/utils/debug.js`
 - **Logger configuration**: `src/utils/logger.js`
-- **Morgan setup**: `src/app.js` (lines 41-48)
+- **Morgan setup**: `src/app.js` (lines 39-52)
 - **Application logs**: `logs/app.log` (production only)
 - **Access logs**: `logs/access.log` (created by morgan configuration, currently unused)
