@@ -22,7 +22,7 @@ const MODULE_NAME = pkg?.name ?? 'es6-express5';
 const createDebugger = (namespace) => debugLib(namespace);
 
 
-const debugServer =  createDebugger(`${MODULE_NAME}:server`);
+const debugServer = createDebugger(`${MODULE_NAME}:server`);
 const debugApplication = createDebugger(`${MODULE_NAME}:application`);
 const debugRoutes = createDebugger(`${MODULE_NAME}:route`);
 
