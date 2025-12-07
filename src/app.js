@@ -87,23 +87,18 @@ app.use("/js", express.static(path.join(__dirname, "../node_modules/dayjs")));
 import indexRouter from "./routes/indexRouter.js";
 
 app.use("/", indexRouter);
-app.use("/ajax", (req, res, next) => res.json("AJAX"));
-app.use("/api", (req, res, next) => res.json("API"));
+app.use("/ajax", (req, res, next) => res.status(501).json({"AJAX": "Not implemented"}));
+app.use("/api", (req, res, next) => res.status(501).json({  "API": "Not implemented" }));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render("error");
-});
+debugApplication("Setting up error handler middleware");
+import defaultErrorHandler from "./controllers/errorController.js";
+// default error handler
+app.use(defaultErrorHandler);
 
 export default app;

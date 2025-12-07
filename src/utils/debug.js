@@ -19,12 +19,18 @@ import pkg from '../../package.json' with { type: 'json' };
 const MODULE_NAME = pkg?.name ?? 'es6-express5';
 
 
-const createDebugger = (namespace) => debugLib(namespace);
-
+export const createDebugger = (namespace) => debugLib(namespace); // Factory function to create debuggers with specific namespaces
 
 const debugServer = createDebugger(`${MODULE_NAME}:server`);
 const debugApplication = createDebugger(`${MODULE_NAME}:application`);
-const debugRoutes = createDebugger(`${MODULE_NAME}:route`);
 
-export { debugServer, debugApplication, debugRoutes };
-export default createDebugger;
+export default debugApplication;
+
+const debugController = createDebugger(`${MODULE_NAME}:controller`);
+const debugMiddleware = createDebugger(`${MODULE_NAME}:middleware`);
+const debugRoutes = createDebugger(`${MODULE_NAME}:route`);
+const debugError = createDebugger(`${MODULE_NAME}:error`);
+
+export { debugServer, debugApplication, debugController, debugMiddleware, debugRoutes, debugError };
+
+

@@ -1,8 +1,6 @@
-let controller = {};
 
-controller.index = (req, res, next) => {
+export const index = (req, res, next) => {
   try {
-    
     res.render("index", { title: "Express" });
       
   } catch (error) {
@@ -10,4 +8,4 @@ controller.index = (req, res, next) => {
   } 
 };
 
-export default controller;
+export default index ;
