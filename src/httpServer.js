@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-import { debugServer } from '../src/utils/debug.js';
+import { debugServer } from './utils/debug.js';
 
 import http from 'http'
 import { configDotenv } from 'dotenv';
@@ -12,7 +12,7 @@ configDotenv();
  * Get port from environment and store in Express.
  */
 
-import app from '../src/app.js'
+import app from './app.js'
 
 
 const port = normalizePort(process.env.PORT || '3000');
