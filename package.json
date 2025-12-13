@@ -10,7 +10,7 @@
     "public/",
     "package.json"
   ],
-  "exports": "./src/index.js",
+  "exports": "./src/app.js",
   "engines": {
     "node": ">=18"
   },
